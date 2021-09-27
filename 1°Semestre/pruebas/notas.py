@@ -1,0 +1,6 @@
+a = float(input("Introduzca la nota de la primera unidad: "))
+b = float(input("Introduzca la nota de la segunda unidad: "))
+c = float(input("Introduzca la nota de la tercera unidad: "))
+d = float(input("Introduzca la nota de la cuarta unidad: "))
+prom = ((a*0.15)+(b*0.15)+(c*0.2)+(d*0.2))
+print(prom)

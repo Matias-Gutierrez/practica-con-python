@@ -1,0 +1,1 @@
+print("\033[4;31m"+"Este es un error"+"\033[0;m")
