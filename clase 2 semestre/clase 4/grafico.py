@@ -1,4 +1,4 @@
-# !/usr/bin/python 
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
 # Nombre del Autor: Matías Gutierrez
 
@@ -19,49 +19,41 @@ def lectura():
 
 def separador():
     lineax,lineay = lectura()
-    if (len(lineax) == len(lineay)):
-        for elem in range(len(lineay)):
-            comodin  = lineay[elem]
-            lineay.pop(elem)
-            lineay.insert(elem,float(comodin))
-        return lineax , lineay
-    else:
-        return False
+    for elem in range(len(lineay)):
+        comodin  = lineay[elem]
+        lineay.pop(elem)
+        lineay.insert(elem,float(comodin))
+    return lineax , lineay
+    
 def datos_casos(x,y):
     x1 = []
     y1 = []
     mes = x[0]
-    # 2020-03-03
-    # 0123456
-
     x1.append(mes[0:7])
-    fecha_mes = 0 
+    fecha_mes = 0
     suma_casos = 0
     for fecha in range(len(x)):
-
-        
         if x[fecha].startswith(x1[fecha_mes]):
             suma_casos += y[fecha]
         else:
             y1.append(suma_casos)
-            suma_casos=y[fecha]
-            fecha_mes+=1
+            suma_casos = y[fecha]
+            fecha_mes += 1
             mes = x[fecha]
             x1.append(mes[0:7])
-
     y1.append(suma_casos)
-    
     return x1, y1
 
 def graficar(x,y):
     fig,aux = plt.subplots()
-    aux.plot(x,y)
+    aux.bar(x,y)
     plt.show()
 
 
 # Codigo Principal
 if(__name__=="__main__"):
     x,y = separador()
-    
-    # x1,y1 = datos_casos(x,y)
-    graficar(x, y)
+
+    x1 ,y1 = datos_casos(x,y)
+    # print(f"{len(x1)} = {len(y1)}")
+    graficar(x1, y1)
